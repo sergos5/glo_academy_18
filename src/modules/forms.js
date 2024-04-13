@@ -89,8 +89,7 @@ const forms = () => {
                     errorMess.style.cssText = ` font-size: 12px;
                                                 color: red;
                                                 transform: ${getComputedStyle(input).transform}`;
-                    input.style.border = '1px solid red';
-                    console.log(errorMess.innerHTML);
+                    input.style.border = '1px solid red';                    
                     input.insertAdjacentElement("afterend", errorMess);
                 }
             };
@@ -118,8 +117,7 @@ const forms = () => {
 
             if (!isError) {
                 if (event.target === modalForm) fadeAnimate(modal);
-                appAnimate(postMess);
-                console.log('Данные отправлены');
+                appAnimate(postMess);                
                 inputName.value = '';
                 inputEmail.value = '';
                 inputPhone.value = '';
