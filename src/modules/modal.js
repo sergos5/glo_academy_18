@@ -7,7 +7,7 @@ const modal = () => {
         let count = 0;
         let idInterval;
         const showAppAnimate = () => {
-            count += 0.02;
+            count += 0.05;
             idInterval = requestAnimationFrame(showAppAnimate);
             if (count <= 1) {
                 modal.style.opacity = count;
@@ -22,7 +22,7 @@ const modal = () => {
         let count = 1;
         let idInterval;
         const showFadeAnimate = () => {
-            count -= 0.02;
+            count -= 0.05;
             idInterval = requestAnimationFrame(showFadeAnimate);
             if (count >= 0) {
                 modal.style.opacity = count;
