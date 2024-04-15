@@ -6,6 +6,22 @@ const forms = () => {
     const modalForm = document.querySelector('#form3');
     let postMess;
 
+    const fadeAnimate = (elem) => {
+        let count = 1;
+        let idInterval;
+        const showFadeAnimate = () => {
+            count -= 0.05;
+            idInterval = requestAnimationFrame(showFadeAnimate);
+            if (count >= 0) {
+                elem.style.opacity = count;
+            } else {
+                cancelAnimationFrame(idInterval);
+                elem.style.display = 'none';
+            }
+        };
+        showFadeAnimate();
+    };
+
     const appAnimate = (elem) => {
         let count = 0;
         let idInterval;
@@ -25,26 +41,10 @@ const forms = () => {
         showAppAnimate();
     };
 
-    const fadeAnimate = (elem) => {
-        let count = 1;
-        let idInterval;
-        const showFadeAnimate = () => {
-            count -= 0.05;
-            idInterval = requestAnimationFrame(showFadeAnimate);
-            if (count >= 0) {
-                elem.style.opacity = count;
-            } else {
-                cancelAnimationFrame(idInterval);
-                elem.style.display = 'none';
-            }
-        };
-        showFadeAnimate();
-    };
-
     const showPostMess = () => {
         postMess = document.createElement('div');
         postMess.textContent = 'Данные отправлены!';
-        postMess.style.cssText = ` position: fixed;  
+        postMess.style.cssText = `  position: fixed;  
                                     color: white;      
                                     font-size: 18px;
                                     position: fixed;
@@ -79,17 +79,17 @@ const forms = () => {
             const inputEmail = form.querySelector('[type=email]');
             let isError = false;
 
-            let addErrorMess = (act, input, mess) => {
+            const addErrorMess = (act, input, mess) => {
                 input.style.border = 'none';
-                let pErrror = input.nextElementSibling;
+                const pErrror = input.nextElementSibling;
                 if (pErrror) pErrror.remove();
                 if (act) {
-                    let errorMess = document.createElement('p');
+                    const errorMess = document.createElement('p');
                     errorMess.textContent = mess;
                     errorMess.style.cssText = ` font-size: 12px;
                                                 color: red;
                                                 transform: ${getComputedStyle(input).transform}`;
-                    input.style.border = '1px solid red';                    
+                    input.style.border = '1px solid red';
                     input.insertAdjacentElement("afterend", errorMess);
                 }
             };
@@ -117,11 +117,11 @@ const forms = () => {
 
             if (!isError) {
                 if (event.target === modalForm) fadeAnimate(modal);
-                appAnimate(postMess);                
                 inputName.value = '';
                 inputEmail.value = '';
                 inputPhone.value = '';
                 formMess.value = '';
+                appAnimate(postMess);
             }
         });
     });

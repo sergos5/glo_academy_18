@@ -15,7 +15,7 @@ const menu = () => {
         }
     }); */
 
-    document.addEventListener('click', (e) => {
+    document.body.addEventListener('click', (e) => {
         if (e.target.closest('.menu')) {
             menu.classList.add('active-menu');
         } else if (e.target.matches('ul > li > a') || e.target.classList.contains('close-btn') || !e.target.closest('menu')) {
