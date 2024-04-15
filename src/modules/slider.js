@@ -1,22 +1,27 @@
-const slider = () => {
+const slider = (slBlock, sl, dBlock, slAct = 'slide-active', dtAct = 'dot-active') => {
 
-    const sliderBlock = document.querySelector('.portfolio-content');
-    const slides = document.querySelectorAll('.portfolio-item');
-    const dotsBlock = document.querySelector('.portfolio-dots');
+    const sliderBlock = document.querySelector(slBlock);
+    if (!sliderBlock) return;
+    const slides = document.querySelectorAll(sl);
+    if (!slides) return;
+    const dotsBlock = document.querySelector(dBlock);
+    if (!dotsBlock) return;
+
     let dots;
-
     let currentSlide = 0;
     let interval;
     const timeInterval = 2000;
 
     const addDots = () => {
-
         for (let i = 0; i < slides.length; i++) {
             const li = document.createElement('li');
             li.classList.add('dot');
             dotsBlock.append(li);
         }
         dots = dotsBlock.querySelectorAll('.dot');
+        console.log(dots)
+        dots[0].classList.add(dtAct);
+        console.log(dots)
     };
 
     const prevSlide = (elems, index, strClass) => {
@@ -28,14 +33,14 @@ const slider = () => {
     };
 
     const autoSlide = () => {
-        prevSlide(slides, currentSlide, 'portfolio-item-active');
-        prevSlide(dots, currentSlide, 'dot-active');
+        prevSlide(slides, currentSlide, slAct);
+        prevSlide(dots, currentSlide, dtAct);
         currentSlide++;
         if (currentSlide >= slides.length) {
             currentSlide = 0;
         };
-        nextSlide(slides, currentSlide, 'portfolio-item-active');
-        nextSlide(dots, currentSlide, 'dot-active');
+        nextSlide(slides, currentSlide, slAct);
+        nextSlide(dots, currentSlide, dtAct);
     };
 
     const startSlide = (timer = 1500) => {
@@ -50,11 +55,11 @@ const slider = () => {
         e.preventDefault();
 
         if (!e.target.matches('.dot, .portfolio-btn')) {
-            return
+            return;
         }
 
-        prevSlide(slides, currentSlide, 'portfolio-item-active');
-        prevSlide(dots, currentSlide, 'dot-active');
+        prevSlide(slides, currentSlide, slAct);
+        prevSlide(dots, currentSlide, dtAct);
 
         if (e.target.matches('#arrow-right')) {
             currentSlide++;
@@ -74,8 +79,8 @@ const slider = () => {
             currentSlide = slides.length - 1;
         }
 
-        nextSlide(slides, currentSlide, 'portfolio-item-active');
-        nextSlide(dots, currentSlide, 'dot-active');
+        nextSlide(slides, currentSlide, slAct);
+        nextSlide(dots, currentSlide, dtAct);
     });
 
     sliderBlock.addEventListener('mouseenter', (e) => {
@@ -89,9 +94,9 @@ const slider = () => {
             startSlide(timeInterval);
         }
     }, true);
+
     addDots();
     startSlide(timeInterval);
-
 };
 
 export default slider;

@@ -15,4 +15,4 @@ scroll();
 calc();
 forms();
 tabs();
-slider();
+slider('.portfolio-content', '.portfolio-item', '.portfolio-dots', 'portfolio-item-active', 'dot-active');
