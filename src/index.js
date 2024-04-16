@@ -8,11 +8,12 @@ import tabs from './modules/tabs';
 import slider from './modules/slider';
 
 
-timer('16 april 2024');
+timer('17 april 2024');
 menu();
 modal();
 scroll();
-calc();
+calc(100);
 forms();
 tabs();
-slider('.portfolio-content', '.portfolio-item', '.portfolio-dots', 'portfolio-item-active', 'dot-active');
+slider('.portfolio-content', '.portfolio-item', '.portfolio-dots',
+    'portfolio-item-active', 'dot-active');

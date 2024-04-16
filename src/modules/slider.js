@@ -1,16 +1,17 @@
 const slider = (slBlock, sl, dBlock, slAct = 'slide-active', dtAct = 'dot-active') => {
 
     const sliderBlock = document.querySelector(slBlock);
-    if (!sliderBlock) return;
     const slides = document.querySelectorAll(sl);
-    if (!slides) return;
     const dotsBlock = document.querySelector(dBlock);
-    if (!dotsBlock) return;
+    const timeInterval = 2000;
 
     let dots;
     let currentSlide = 0;
     let interval;
-    const timeInterval = 2000;
+
+    if (!sliderBlock) return;
+    if (!slides) return;
+    if (!dotsBlock) return;
 
     const addDots = () => {
         for (let i = 0; i < slides.length; i++) {
@@ -19,9 +20,7 @@ const slider = (slBlock, sl, dBlock, slAct = 'slide-active', dtAct = 'dot-active
             dotsBlock.append(li);
         }
         dots = dotsBlock.querySelectorAll('.dot');
-        console.log(dots)
         dots[0].classList.add(dtAct);
-        console.log(dots)
     };
 
     const prevSlide = (elems, index, strClass) => {
