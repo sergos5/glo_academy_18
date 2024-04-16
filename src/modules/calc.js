@@ -10,6 +10,22 @@ const calc = (price = 100) => {
         input.value = input.value.replace(/\D/, "");
     };
 
+    const showAnimateResult = (resultlValue) => {
+        let start = +total.textContent;
+        let end = +resultlValue;
+        let num = (end - start) / 50;
+        let counter = 0;
+        let idInterval = setInterval(() => {
+            start = Math.floor(start + num);
+            total.textContent = start;
+            counter++;
+            if (counter === 50) {
+                total.textContent = resultlValue;
+                clearInterval(idInterval);
+            }
+        }, 10);
+    };
+
     const countCalc = () => {
         const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
         const calcSquareValue = calcSquare.value;
@@ -33,7 +49,7 @@ const calc = (price = 100) => {
         } else {
             totalValue = 0;
         }
-        total.textContent = totalValue;
+        showAnimateResult(totalValue);
     };
 
     calcBlock.addEventListener('input', (e) => {
@@ -41,7 +57,6 @@ const calc = (price = 100) => {
             e.preventDefault();
             enterOnlyNumbers(e.target);
         }
-
         if (e.target === calcType || e.target === calcSquare ||
             e.target === calcCount || e.target === calcDay) {
             countCalc();
