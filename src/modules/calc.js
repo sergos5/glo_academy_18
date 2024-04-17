@@ -12,15 +12,15 @@ const calc = (price = 100) => {
 
     const showAnimateResult = (resultlValue) => {
         let start = +total.textContent;
-        let end = +resultlValue;
-        let num = (end - start) / 50;
+        const end = +resultlValue;
+        const num = (end - start) / 50;
         let counter = 0;
-        let idInterval = setInterval(() => {
+        const idInterval = setInterval(() => {
             start = Math.floor(start + num);
             total.textContent = start;
             counter++;
             if (counter === 50) {
-                total.textContent = resultlValue;
+                total.textContent = Math.floor(resultlValue);
                 clearInterval(idInterval);
             }
         }, 10);
