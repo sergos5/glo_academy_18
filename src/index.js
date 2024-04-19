@@ -8,7 +8,7 @@ import tabs from './modules/tabs';
 import slider from './modules/slider';
 
 
-timer('17 april 2024');
+timer('20 april 2024');
 menu();
 modal();
 scroll();

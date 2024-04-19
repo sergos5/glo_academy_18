@@ -6,10 +6,6 @@ const modal = () => {
     const modal = document.querySelector('.popup');
     const buttons = document.querySelectorAll('.popup-btn');
 
-
-
-
-
     /* const appAnimate = () => {
         let count = 0;
         let idInterval;
@@ -40,14 +36,6 @@ const modal = () => {
         };
         showFadeAnimate();
     }; */
-
-
-
-
-
-
-
-
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {

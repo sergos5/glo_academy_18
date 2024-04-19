@@ -93,8 +93,6 @@ const forms = () => {
             setTimeout(() => {
                 postMess.style.display = 'none';
             }, 2500);
-
-
         } else {
             postMess.style.display = 'block';
             postMess.style.opacity = 1;
@@ -102,8 +100,7 @@ const forms = () => {
                 postMess.style.display = 'none';
                 postMess.style.opacity = 0;
             }, 1000);
-        };
-
+        }
     };
 
     createPostMess();
@@ -184,7 +181,6 @@ const forms = () => {
         });
     });
 };
-
 
 
 export default forms;
