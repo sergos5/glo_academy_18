@@ -1,3 +1,7 @@
+import {
+    animate
+} from './helpers.js';
+
 const forms = () => {
 
     const userForm = document.querySelectorAll('[name="user_form"]');
@@ -6,7 +10,7 @@ const forms = () => {
     const modalForm = document.querySelector('#form3');
     let postMess;
 
-    const fadeAnimate = (elem) => {
+    /* const fadeAnimate = (elem) => {
         let count = 1;
         let idInterval;
         const showFadeAnimate = () => {
@@ -39,9 +43,9 @@ const forms = () => {
             }
         };
         showAppAnimate();
-    };
+    }; */
 
-    const showPostMess = () => {
+    const createPostMess = () => {
         postMess = document.createElement('div');
         postMess.textContent = 'Данные отправлены!';
         postMess.style.cssText = `  position: fixed;  
@@ -61,11 +65,48 @@ const forms = () => {
                                     opacity: 0;
                                     display: none`;
         document.body.insertAdjacentElement("beforeend", postMess);
+    };
 
-    }
+    const showPostMess = () => {
+        postMess.style.display = 'block';
+        if (screen.width >= 768) {
+            animate({
+                duration: 1000,
+                timing(timeFraction) {
+                    return timeFraction;
+                },
+                draw(progress) {
+                    postMess.style.opacity = progress;
+                }
+            });
+            setTimeout(() => {
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        postMess.style.opacity = 1 - progress;
+                    }
+                });
+            }, 1500);
+            setTimeout(() => {
+                postMess.style.display = 'none';
+            }, 2500);
 
-    showPostMess();
 
+        } else {
+            postMess.style.display = 'block';
+            postMess.style.opacity = 1;
+            setTimeout(() => {
+                postMess.style.display = 'none';
+                postMess.style.opacity = 0;
+            }, 1000);
+        };
+
+    };
+
+    createPostMess();
 
     formMess.addEventListener('input', () => {
         formMess.value = formMess.value.replace(/[^а-я -]+/gi, "");
@@ -116,12 +157,29 @@ const forms = () => {
             }
 
             if (!isError) {
-                if (event.target === modalForm) fadeAnimate(modal);
+                if (event.target === modalForm && screen.width >= 768) {
+                    animate({
+                        duration: 1000,
+                        timing(timeFraction) {
+                            return timeFraction;
+                        },
+                        draw(progress) {
+                            modal.style.opacity = 1 - progress;
+                        }
+                    });
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 1000);
+                } else if (event.target === modalForm) {
+                    modal.style.display = 'none';
+                    modal.style.opacity = 0;
+                }
                 inputName.value = '';
                 inputEmail.value = '';
                 inputPhone.value = '';
                 formMess.value = '';
-                appAnimate(postMess);
+
+                showPostMess();
             }
         });
     });

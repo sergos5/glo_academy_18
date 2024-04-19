@@ -1,8 +1,16 @@
+import {
+    animate
+} from './helpers.js';
+
 const modal = () => {
     const modal = document.querySelector('.popup');
     const buttons = document.querySelectorAll('.popup-btn');
-    
-    const appAnimate = () => {
+
+
+
+
+
+    /* const appAnimate = () => {
         let count = 0;
         let idInterval;
         const showAppAnimate = () => {
@@ -15,9 +23,9 @@ const modal = () => {
             }
         };
         showAppAnimate();
-    };
+    }; */
 
-    const fadeAnimate = () => {
+    /* const fadeAnimate = () => {
         let count = 1;
         let idInterval;
         const showFadeAnimate = () => {
@@ -31,27 +39,57 @@ const modal = () => {
             }
         };
         showFadeAnimate();
-    };
+    }; */
+
+
+
+
+
+
+
+
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             modal.style.display = 'block';
-            if (screen.width >= 768) appAnimate();
+            if (screen.width >= 768) {
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        modal.style.opacity = progress;
+                    }
+                });
+            } else {
+                modal.style.display = 'block';
+                modal.style.opacity = 1;
+            };
         });
     });
 
     modal.addEventListener('click', (e) => {
         if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
             if (screen.width >= 768) {
-                fadeAnimate();
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        modal.style.opacity = 1 - progress;
+                    }
+                });
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 1000);
             } else {
                 modal.style.display = 'none';
+                modal.style.opacity = 0;
             }
         }
     });
-
-
-
 };
 
 export default modal;
