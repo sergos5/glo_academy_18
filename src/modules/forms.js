@@ -71,7 +71,7 @@ const forms = () => {
         postMess.style.display = 'block';
         if (screen.width >= 768) {
             animate({
-                duration: 1000,
+                duration: 500,
                 timing(timeFraction) {
                     return timeFraction;
                 },
@@ -81,7 +81,7 @@ const forms = () => {
             });
             setTimeout(() => {
                 animate({
-                    duration: 1000,
+                    duration: 500,
                     timing(timeFraction) {
                         return timeFraction;
                     },
@@ -92,7 +92,7 @@ const forms = () => {
             }, 1500);
             setTimeout(() => {
                 postMess.style.display = 'none';
-            }, 2500);
+            }, 2000);
         } else {
             postMess.style.display = 'block';
             postMess.style.opacity = 1;
@@ -156,7 +156,7 @@ const forms = () => {
             if (!isError) {
                 if (event.target === modalForm && screen.width >= 768) {
                     animate({
-                        duration: 1000,
+                        duration: 500,
                         timing(timeFraction) {
                             return timeFraction;
                         },
@@ -166,7 +166,7 @@ const forms = () => {
                     });
                     setTimeout(() => {
                         modal.style.display = 'none';
-                    }, 1000);
+                    }, 500);
                 } else if (event.target === modalForm) {
                     modal.style.display = 'none';
                     modal.style.opacity = 0;

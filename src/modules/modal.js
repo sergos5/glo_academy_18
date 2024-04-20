@@ -42,7 +42,7 @@ const modal = () => {
             modal.style.display = 'block';
             if (screen.width >= 768) {
                 animate({
-                    duration: 1000,
+                    duration: 500,
                     timing(timeFraction) {
                         return timeFraction;
                     },
@@ -61,7 +61,7 @@ const modal = () => {
         if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
             if (screen.width >= 768) {
                 animate({
-                    duration: 1000,
+                    duration: 500,
                     timing(timeFraction) {
                         return timeFraction;
                     },
@@ -71,7 +71,7 @@ const modal = () => {
                 });
                 setTimeout(() => {
                     modal.style.display = 'none';
-                }, 1000);
+                }, 500);
             } else {
                 modal.style.display = 'none';
                 modal.style.opacity = 0;
