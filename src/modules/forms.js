@@ -171,10 +171,10 @@ const forms = () => {
                     modal.style.display = 'none';
                     modal.style.opacity = 0;
                 }
-                inputName.value = '';
+                /* inputName.value = '';
                 inputEmail.value = '';
                 inputPhone.value = '';
-                formMess.value = '';
+                formMess.value = ''; */
 
                 showPostMess();
             }
