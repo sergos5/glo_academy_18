@@ -1,13 +1,17 @@
+import {
+    animate
+} from './helpers.js';
+
 const sendForm = ({
     formId,
     someElem = []
 }) => {
     const form = document.getElementById(formId);
+    const formMess = document.querySelector('.mess');
     const statusBlock = document.createElement('div');
     const loadText = 'Загрузка...';
     const errorText = 'Ошибка...';
     const successText = 'Спасибо! Наш менеджер с Вами свяжется!';
-
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -72,11 +76,11 @@ const sendForm = ({
         const formBody = {};
 
         statusBlock.textContent = loadText;
+        statusBlock.style.color = 'white'
         form.append(statusBlock);
 
 
         formData.forEach((val, key) => {
-            console.log(val, key)
             formBody[key] = val;
         });
         someElem.forEach((elem) => {
@@ -96,14 +100,39 @@ const sendForm = ({
                     formElements.forEach((input) => {
                         input.value = '';
                     })
+                    setTimeout(() => {
+                        statusBlock.textContent = '';
+                        if (form.id === 'form3') {
+                            const modal = document.querySelector('.popup');
+                            animate({
+                                duration: 500,
+                                timing(timeFraction) {
+                                    return timeFraction;
+                                },
+                                draw(progress) {
+                                    modal.style.opacity = 1 - progress;
+                                }
+                            });
+                            setTimeout(() => {
+                                modal.style.display = 'none';
+                            }, 500);
+                        }
+                    }, 3000);
                 })
                 .catch(error => {
                     statusBlock.textContent = errorText;
                 })
+
         } else {
             console.log('error!!!');
         }
+
+
     };
+
+    formMess.addEventListener('input', () => {
+        formMess.value = formMess.value.replace(/[^а-я0-9 -=/,:;\()?+.]+/gi, "");
+    });
 
     try {
         if (!form) {
