@@ -132,6 +132,7 @@ const forms = () => {
                 }
             };
 
+
             if (!(!/[^а-я^ ^-]+/i.test(inputName.value) && inputName.value !== "")) {
                 addErrorMess(true, inputName, 'Введите Ваше имя');
                 isError = true;
