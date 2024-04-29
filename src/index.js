@@ -6,6 +6,9 @@ import calc from './modules/calc';
 import tabs from './modules/tabs';
 import slider from './modules/slider';
 import sendForm from './modules/sendForm';
+import {
+    swiperSlider
+} from './modules/swiperSlider';
 
 const userForm = document.querySelectorAll('[name="user_form"]');
 userForm.forEach((form) => {
@@ -27,3 +30,4 @@ calc(100);
 tabs();
 slider('.portfolio-content', '.portfolio-item', '.portfolio-dots',
     'portfolio-item-active', 'dot-active');
+swiperSlider();
