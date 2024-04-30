@@ -1,10 +1,14 @@
 import Swiper from 'swiper';
+import {
+    Autoplay
+} from 'swiper/modules';
 
 export const swiperSlider = () => {
     const swiper = new Swiper('.swiper', {
+        modules: [Autoplay],
         loop: true,
         autoplay: {
-            delay: 500,
+            delay: 1500,
             disableOnInteraction: true,
         },
         breakpoints: {

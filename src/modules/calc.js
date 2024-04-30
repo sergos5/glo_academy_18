@@ -14,24 +14,6 @@ const calc = (price = 100) => {
         input.value = input.value.replace(/\D/, "");
     };
 
-
-    /*     const showAnimateResult = (resultlValue) => {
-            let start = +total.textContent;
-            const end = +resultlValue;
-            const num = (end - start) / 50;
-            let counter = 0;
-            const idInterval = setInterval(() => {
-                start = Math.floor(start + num);
-                total.textContent = start;
-                counter++;
-                if (counter === 50) {
-                    total.textContent = Math.floor(resultlValue);
-                    clearInterval(idInterval);
-                }
-            }, 10);
-        }; */
-
-
     const countCalc = () => {
         const calcTypeValue = +calcType.options[calcType.selectedIndex].value;
         const calcSquareValue = calcSquare.value;
@@ -68,9 +50,6 @@ const calc = (price = 100) => {
 
             }
         });
-
-
-        //showAnimateResult(totalValue);
     };
 
     calcBlock.addEventListener('input', (e) => {

@@ -22,7 +22,7 @@ userForm.forEach((form) => {
 });
 
 
-timer('29 april 2024');
+timer('9 may 2024');
 menu();
 modal();
 scroll();
