@@ -40,10 +40,11 @@ const timer = (deadline) => {
             timerHours.textContent = addZero(getTime.hours);
             timerMinutes.textContent = addZero(getTime.minutes);
             timerSeconds.textContent = addZero(getTime.seconds);
+            clockInterval = setInterval(updateClock, 1000);
         }
     };
+    updateClock();
 
-    clockInterval = setInterval(updateClock, 1000);
 
 };
 
